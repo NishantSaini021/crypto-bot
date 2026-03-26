@@ -9,8 +9,11 @@ API_KEY = os.getenv("API_KEY")
 API_SECRET = os.getenv("API_SECRET")
 BOT_TOKEN = os.getenv("BOT_TOKEN")
 # ==========================
-session = HTTP(api_key=API_KEY, api_secret=API_SECRET)
-
+def get_price():
+    url = "https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT"
+    data = requests.get(url).json()
+    return float(data["price"])
+price = get_price()
 users = {}
 
 def send_telegram(chat_id, message):
