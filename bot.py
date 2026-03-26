@@ -20,8 +20,14 @@ def send_telegram(chat_id, message):
 def get_updates(offset=None):
     url = f"https://api.telegram.org/bot{BOT_TOKEN}/getUpdates"
     params = {"timeout": 100, "offset": offset}
-    return requests.get(url, params=params).json()["result"]
 
+    response = requests.get(url, params=params).json()
+
+    if not response.get("ok"):
+        print("Telegram Error:", response)
+        return []
+
+    return response.get("result", [])
 print("Bot running...")
 
 offset = None
