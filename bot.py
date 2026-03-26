@@ -3,12 +3,11 @@ import requests
 import time
 
     
-# ====== YOUR DETAILS ======
-API_KEY = "Jns0V7MYI0htUmCRtA6"
-API_SECRET = "sgf8GGU6BtaWye9mruNdNFNc1wulimXLrxZH"
+import os
 
-BOT_TOKEN = "8652456862:AAFrKQbOiK4HZDQns7dxMgROBqYPrEt16PU"
-
+API_KEY = os.getenv("API_KEY")
+API_SECRET = os.getenv("API_SECRET")
+BOT_TOKEN = os.getenv("BOT_TOKEN")
 # ==========================
 session = HTTP(api_key=API_KEY, api_secret=API_SECRET)
 
